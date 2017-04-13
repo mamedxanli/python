@@ -1,4 +1,4 @@
-#!/bin/usr/python
+#!/usr/bin/python
 
 class InstanceCounter(object):
     count = 0
@@ -12,8 +12,9 @@ class InstanceCounter(object):
 
     def get_val(self):
         return self.val
-    def get_count(self):
-        return InstanceCounter.count
+    @classmethod
+    def get_count(cls):
+        return cls.count
 
 a = InstanceCounter(5)
 b = InstanceCounter(13)
@@ -23,4 +24,4 @@ for obj in (a,b,c):
     print 'val of obj: {}'.format(obj.get_val())
     print 'count: {}'.format(obj.get_count())
 
-
+print InstanceCounter.get_count()
