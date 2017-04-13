@@ -4,24 +4,19 @@ class InstanceCounter(object):
     count = 0
 
     def __init__(self, val):
-        self.val = val
+        self.val = val.filterint(val)
         InstanceCounter.count += 1
 
-    def set_val(self, newval):
-        self.val = newval
-
-    def get_val(self):
-        return self.val
-    @classmethod
-    def get_count(cls):
-        return cls.count
-
+    @staticmethod
+    def filterint(value):
+        if not isinstance(value, int):
+            return 0
+        else:
+            return value 
 a = InstanceCounter(5)
 b = InstanceCounter(13)
 c = InstanceCounter(17)
 
-for obj in (a,b,c):
-    print 'val of obj: {}'.format(obj.get_val())
-    print 'count: {}'.format(obj.get_count())
-
-print InstanceCounter.get_count()
+print a.val
+print b.val
+print c.val
