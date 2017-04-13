@@ -1,22 +1,45 @@
 #!/usr/bin/python
 
-class InstanceCounter(object):
-    count = 0
+import abc
 
-    def __init__(self, val):
-        self.val = val.filterint(val)
-        InstanceCounter.count += 1
+class GetterSetter(object):
+    __metaclass__=abc.ABCMeta
 
-    @staticmethod
-    def filterint(value):
-        if not isinstance(value, int):
-            return 0
-        else:
-            return value 
-a = InstanceCounter(5)
-b = InstanceCounter(13)
-c = InstanceCounter(17)
+    @abc.abstractmethod
+    def set_val(self, input):
+        """Set a value in the instance"""
+        return
+    
+    @abc.abstractmethod
+    def get_val(self):
+        """Get and return a value from the instance"""
+        return
 
-print a.val
-print b.val
-print c.val
+class MyClass(GetterSetter):
+    def set_val(self, input):
+        self.val = input
+
+    def get_val(self):
+        return self.val
+
+x = MyClass()
+print x
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
